@@ -12,6 +12,29 @@ configure terminal
 hostname R1
 no ip domain-lookup
 
+! ================================================
+! SEGURIDAD BASICA - R1
+! enable secret  -> clave cifrada para entrar a modo privilegiado
+! line console 0 -> clave al conectarse por cable de consola
+! line vty 0 4   -> clave para acceso remoto (Telnet)
+! service password-encryption -> cifra las claves en el running-config
+! banner motd    -> mensaje de aviso al conectarse
+! ================================================
+enable secret cisco123
+
+line console 0
+ password cisco123
+ login
+ exit
+
+line vty 0 4
+ password ciscovyt
+ login
+ exit
+
+service password-encryption
+banner motd #Acceso solo para personal autorizado de Comercial Andina#
+
 interface g0/0
  description LAN A - Administracion
  ip address 192.168.10.1 255.255.255.128
@@ -49,7 +72,7 @@ end
 write
 ```
 
-Verificación: `show ip route rip` y `show ip protocols`.
+Verificación: `show ip route rip` y `show ip protocols`. Para revisar claves y banner: `show running-config`.
 
 ---
 
@@ -62,6 +85,29 @@ enable
 configure terminal
 hostname R1
 no ip domain-lookup
+
+! ================================================
+! SEGURIDAD BASICA - R1
+! enable secret  -> clave cifrada para entrar a modo privilegiado
+! line console 0 -> clave al conectarse por cable de consola
+! line vty 0 4   -> clave para acceso remoto (Telnet)
+! service password-encryption -> cifra las claves en el running-config
+! banner motd    -> mensaje de aviso al conectarse
+! ================================================
+enable secret cisco123
+
+line console 0
+ password cisco123
+ login
+ exit
+
+line vty 0 4
+ password ciscovyt
+ login
+ exit
+
+service password-encryption
+banner motd #Acceso solo para personal autorizado de Comercial Andina#
 
 interface g0/0
  description LAN A - Administracion
@@ -101,4 +147,4 @@ end
 write
 ```
 
-Verificación: `show ip route static` (deben salir 4 rutas **S**).
+Verificación: `show ip route static` (deben salir 4 rutas **S**). Para revisar claves y banner: `show running-config`.
