@@ -1,5 +1,7 @@
 # R1 · Comercial Andina
 
+![Topología de la red](topologia.png)
+
 Dos versiones de la configuración de R1: una con **RIPv2** y otra con **enrutamiento estático**. Usa solo una de las dos.
 
 ---
